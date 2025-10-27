@@ -1,4 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Shop - Modern E-Commerce Application
+
+A full-featured e-commerce application built with Next.js, React, and Tailwind CSS. This application provides a seamless shopping experience with product browsing, cart management, and checkout functionality.
+
+## System Design Overview
+
+### Architecture
+- **Framework**: Next.js 16 with App Router
+- **Styling**: Tailwind CSS for responsive design
+- **State Management**: React Context API for cart management
+- **Data Fetching**: RESTful API integration with FakeStoreAPI
+- **Type Safety**: TypeScript for type-safe development
+
+### Key Components
+- **Product Catalog**: Browse products with filtering and search capabilities
+- **Shopping Cart**: Add, remove, and update item quantities with localStorage persistence
+- **Checkout Process**: Multi-step checkout with shipping information and order summary
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+
+### Data Flow
+1. Products are fetched from the FakeStoreAPI
+2. Cart state is managed through React Context and persisted in localStorage
+3. User interactions update the cart state which triggers re-renders
+4. Checkout process collects shipping information and processes orders
+
+### Project Structure
+```
+├── app/                    # Next.js app directory
+│   ├── components/         # Reusable UI components
+│   ├── cart/              # Cart page
+│   ├── checkout/          # Checkout page
+│   └── products/          # Product pages
+├── hooks/                 # Custom React hooks
+├── lib/                   # Utility functions and API calls
+└── types/                 # TypeScript type definitions
+```
 
 ## Getting Started
 
