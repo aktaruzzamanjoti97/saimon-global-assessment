@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useCart } from '@/hooks/CartContext';
 import SearchBar from './SearchBar';
 
 export default function Header() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { cart } = useCart();
 
   return (
@@ -22,7 +23,7 @@ export default function Header() {
             </Link>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* <nav className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
               className={`text-sm font-medium transition-all duration-200 px-3 py-2 rounded-md ${
@@ -33,20 +34,11 @@ export default function Header() {
             >
               Home
             </Link>
-            <Link
-              href="/products"
-              className={`text-sm font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                pathname === '/products'
-                  ? 'text-blue-600 bg-blue-50'
-                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-              }`}
-            >
-              Products
-            </Link>
-          </nav>
+            
+          </nav> */}
 
           <div className="flex items-center space-x-2 sm:space-x-4">
-            <SearchBar />
+            <SearchBar searchParams={searchParams} />
             <Link
               href="/cart"
               className="relative p-2 text-gray-700 hover:text-blue-600 transition-all duration-200 hover:bg-blue-50 rounded-lg group"

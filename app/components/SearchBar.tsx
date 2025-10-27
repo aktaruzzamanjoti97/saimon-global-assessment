@@ -1,17 +1,57 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useDebounce } from '@/hooks/useDebounce';
 
-export default function SearchBar() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isExpanded, setIsExpanded] = useState(false);
+interface SearchBarProps {
+  searchParams?: URLSearchParams;
+}
+
+export default function SearchBar({ searchParams: propSearchParams }: SearchBarProps = {}) {
+  const hookSearchParams = useSearchParams();
+  const searchParams = propSearchParams || hookSearchParams;
   const router = useRouter();
+  
+  // Get initial search from URL
+  const initialSearch = searchParams.get('search') || '';
+  
+  const [searchQuery, setSearchQuery] = useState(initialSearch);
+  const [isExpanded, setIsExpanded] = useState(!!initialSearch);
+  
+  // Debounce the search query to avoid excessive API calls
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
+
+  // Update URL when debounced search query changes
+  useEffect(() => {
+    if (debouncedSearchQuery.trim()) {
+      const params = new URLSearchParams();
+      params.set('search', debouncedSearchQuery.trim());
+      router.push(`/?${params.toString()}`);
+    } else if (searchParams.has('search')) {
+      // If search query is empty but URL has search param, clear it
+      router.push('/');
+    }
+  }, [debouncedSearchQuery, router, searchParams]);
+
+  // Update URL when debounced search query changes
+  useEffect(() => {
+    if (debouncedSearchQuery.trim()) {
+      const params = new URLSearchParams();
+      params.set('search', debouncedSearchQuery.trim());
+      router.push(`/?${params.toString()}`);
+    } else if (searchParams.has('search')) {
+      // If search query is empty but URL has search param, clear it
+      router.push('/');
+    }
+  }, [debouncedSearchQuery, router, searchParams]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+      const params = new URLSearchParams();
+      params.set('search', searchQuery.trim());
+      router.push(`/?${params.toString()}`);
     }
   };
 
