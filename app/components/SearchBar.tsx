@@ -34,18 +34,6 @@ export default function SearchBar({ searchParams: propSearchParams }: SearchBarP
     }
   }, [debouncedSearchQuery, router, searchParams]);
 
-  // Update URL when debounced search query changes
-  useEffect(() => {
-    if (debouncedSearchQuery.trim()) {
-      const params = new URLSearchParams();
-      params.set('search', debouncedSearchQuery.trim());
-      router.push(`/?${params.toString()}`);
-    } else if (searchParams.has('search')) {
-      // If search query is empty but URL has search param, clear it
-      router.push('/');
-    }
-  }, [debouncedSearchQuery, router, searchParams]);
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {

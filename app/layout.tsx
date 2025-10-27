@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import { CartProvider } from "@/hooks/CartContext";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 transition-colors duration-300`}
       >
         <CartProvider>
-          <Header />
+          <Suspense fallback={<div className="h-16 bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100"></div>}>
+            <Header />
+          </Suspense>
           <main className="min-h-screen">
             {children}
           </main>
