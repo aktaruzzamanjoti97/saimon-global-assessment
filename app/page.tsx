@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { Suspense, useState } from 'react';
 import FilterSidebar from './components/FilterSidebar';
 import ProductList from './components/ProductList';
 import TopProducts from './components/TopProducts';
@@ -9,7 +9,7 @@ import TopProducts from './components/TopProducts';
 function HomeContent() {
 	const searchParams = useSearchParams();
 	const initialSearch = searchParams.get('search') || '';
-	
+
 	const [filters, setFilters] = useState({
 		category: '',
 		minPrice: 0,
@@ -34,13 +34,14 @@ function HomeContent() {
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
 				<div className='text-center mb-12'>
 					<h1 className='text-4xl md:text-5xl font-bold text-gray-900 mb-4'>
-						{initialSearch ? `Search Results for "${initialSearch}"` : 'Welcome to E-Shop'}
+						{initialSearch
+							? `Search Results for "${initialSearch}"`
+							: 'Welcome to E-Shop'}
 					</h1>
 					<p className='text-lg text-gray-600 max-w-2xl mx-auto'>
 						{initialSearch
 							? `Showing products matching "${initialSearch}"`
-							: 'Discover our amazing collection of products at great prices.'
-						}
+							: 'Discover our amazing collection of products at great prices.'}
 					</p>
 				</div>
 
@@ -126,13 +127,14 @@ function HomeContent() {
 export default function Home() {
 	const searchParams = useSearchParams();
 	const searchKey = searchParams.get('search') || 'no-search';
-	
+
 	return (
-		<Suspense fallback={
-			<div className="flex justify-center items-center h-64">
-				<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-			</div>
-		}>
+		<Suspense
+			fallback={
+				<div className='flex justify-center items-center h-64'>
+					<div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600'></div>
+				</div>
+			}>
 			<HomeContent key={searchKey} />
 		</Suspense>
 	);
