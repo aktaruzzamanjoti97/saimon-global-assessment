@@ -13,6 +13,7 @@ A full-featured e-commerce application built with Next.js, React, and Tailwind C
 
 ### Key Components
 - **Product Catalog**: Browse products with filtering and search capabilities
+- **Product Ranking**: Advanced utility functions to find top products based on rating and price
 - **Shopping Cart**: Add, remove, and update item quantities with localStorage persistence
 - **Checkout Process**: Multi-step checkout with shipping information and order summary
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
@@ -27,11 +28,17 @@ A full-featured e-commerce application built with Next.js, React, and Tailwind C
 ```
 ├── app/                    # Next.js app directory
 │   ├── components/         # Reusable UI components
+│   │   ├── TopProducts.tsx         # Component for displaying top products
+│   │   └── TopProductsShowcase.tsx # Interactive component with multiple ranking methods
 │   ├── cart/              # Cart page
 │   ├── checkout/          # Checkout page
 │   └── products/          # Product pages
+├── docs/                  # Documentation
+│   └── product-ranking.md # Documentation for product ranking utilities
 ├── hooks/                 # Custom React hooks
 ├── lib/                   # Utility functions and API calls
+│   ├── api.ts             # API functions including product ranking endpoints
+│   └── productUtils.ts    # Core product ranking utility functions
 └── types/                 # TypeScript type definitions
 ```
 
@@ -54,6 +61,21 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Product Ranking Features
+
+The application includes advanced utility functions for efficiently finding top products from large datasets based on rating and price:
+
+### Key Features
+- **Multiple Ranking Algorithms**: Weighted scoring, logarithmic scaling, and best value calculations
+- **Performance Optimized**: Efficient algorithms for large datasets (>10,000 products)
+- **Customizable Scoring**: Adjustable weights for rating and price preferences
+- **React Components**: Ready-to-use components for displaying ranked products
+
+### Available Functions
+- `getTopProducts()`: Top products scoring based on rating and price
+
+For detailed documentation, see [Product Ranking Documentation](./docs/product-ranking.md).
 
 ## Learn More
 

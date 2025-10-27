@@ -24,8 +24,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link href={`/products/${product.id}`} className="block group">
       <div className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full cursor-pointer border border-gray-100 overflow-hidden">
-        <div className="relative h-56 w-full bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="relative h-56 w-full bg-linear-to-br from-gray-50 to-gray-100 overflow-hidden">
+          <div className="absolute inset-0 bg-linear-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <Image
             src={product.image}
             alt={product.title}
@@ -35,14 +35,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
         </div>
         
-        <div className="p-5 flex flex-col flex-grow">
+        <div className="p-5 flex flex-col grow">
           <div className="mb-3">
             <span className="inline-block px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-50 rounded-full">
               {product.category}
             </span>
           </div>
           
-          <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 flex-grow group-hover:text-blue-600 transition-colors">
+          <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 grow group-hover:text-blue-600 transition-colors">
             {product.title}
           </h3>
           
