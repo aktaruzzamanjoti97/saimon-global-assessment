@@ -10,3 +10,46 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom radio button styles to ensure checked state is visible */
+input[type="radio"]:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+input[type="radio"]:checked::before {
+  background-color: white;
+}
+
+/* Ensure radio buttons have proper sizing and appearance */
+input[type="radio"] {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+input[type="radio"]:hover {
+  border-color: #9ca3af;
+}
+
+input[type="radio"]:checked {
+  border-color: #3b82f6;
+  background-color: #3b82f6;
+}
+
+input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background-color: white;
+}

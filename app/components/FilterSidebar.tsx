@@ -114,7 +114,7 @@ export default function FilterSidebar({
 								value=''
 								checked={currentFilters.category === ''}
 								onChange={() => handleCategoryChange('')}
-								className='mr-2 text-blue-600 focus:ring-blue-500'
+								className='mr-2 w-4 h-4 text-blue-600 focus:ring-blue-500 focus:ring-2'
 							/>
 							<span className='text-sm text-gray-700'>
 								All Categories
@@ -130,7 +130,7 @@ export default function FilterSidebar({
 									value={category}
 									checked={currentFilters.category === category}
 									onChange={() => handleCategoryChange(category)}
-									className='mr-2 text-blue-600 focus:ring-blue-500'
+									className='mr-2 w-4 h-4 text-blue-600 focus:ring-blue-500 focus:ring-2'
 								/>
 								<span className='text-sm text-gray-700 capitalize'>
 									{category}
