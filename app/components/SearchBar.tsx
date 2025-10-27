@@ -1,16 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useDebounce } from '@/hooks/useDebounce';
 
 interface SearchBarProps {
-  searchParams?: URLSearchParams;
+  searchParams: URLSearchParams;
 }
 
-export default function SearchBar({ searchParams: propSearchParams }: SearchBarProps = {}) {
-  const hookSearchParams = useSearchParams();
-  const searchParams = propSearchParams || hookSearchParams;
+export default function SearchBar({ searchParams }: SearchBarProps) {
   const router = useRouter();
   
   // Get initial search from URL

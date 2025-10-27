@@ -125,9 +125,6 @@ function HomeContent() {
 }
 
 export default function Home() {
-	const searchParams = useSearchParams();
-	const searchKey = searchParams.get('search') || 'no-search';
-
 	return (
 		<Suspense
 			fallback={
@@ -135,7 +132,14 @@ export default function Home() {
 					<div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600'></div>
 				</div>
 			}>
-			<HomeContent key={searchKey} />
+			<HomeContentWrapper />
 		</Suspense>
 	);
+}
+
+function HomeContentWrapper() {
+	const searchParams = useSearchParams();
+	const searchKey = searchParams.get('search') || 'no-search';
+
+	return <HomeContent key={searchKey} />;
 }
