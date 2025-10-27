@@ -73,7 +73,7 @@ export default function ProductDetailPage() {
   const inCart = isInCart(product.id);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav className="mb-8">
           <Link
@@ -100,7 +100,7 @@ export default function ProductDetailPage() {
 
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           <div className="md:flex">
-            <div className="md:w-1/2 p-8 bg-gradient-to-br from-gray-50 to-gray-100">
+            <div className="md:w-1/2 p-8 bg-linear-to-br from-gray-50 to-gray-100">
               <div className="relative h-96 w-full bg-white rounded-xl p-8 shadow-inner">
                 <Image
                   src={product.image}
